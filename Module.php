@@ -81,14 +81,10 @@ class Module extends \yii\base\Module implements BootstrapInterface
 //                $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>' => $this->id . '/<controller>/<action>',
 //            ], false);
         } elseif ($app instanceof \yii\console\Application) {
-            /**
-             * TODO: Add clear expired tokens as console controller
-             * Next commented code used for example:
-             */
-//            $app->controllerMap[$this->id] = [
-//                'class' => 'yii\gii\console\GenerateController',
-//                'module' => $this,
-//            ];
+            $app->controllerMap[$this->id] = [
+                'class' => 'gbksoft\tokens\commands\AppController',
+                'module' => $this,
+            ];
         }
     }
 

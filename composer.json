@@ -20,7 +20,8 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "yiisoft/yii2": ">=2.0.4"
+    "yiisoft/yii2": ">=2.0.4",
+    "react/event-loop": "^0.4.1"
   },
   "autoload": {
     "psr-4": {
