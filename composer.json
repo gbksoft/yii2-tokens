@@ -1,0 +1,30 @@
+{
+  "name": "gbksoft/yii2-tokens",
+  "description": "Yii 2 custom tokens architecture for authorization",
+  "type": "yii2-extension",
+  "version": "1.0.0",
+  "keywords": [
+    "yii2",
+    "extension",
+    "module",
+    "tokens",
+    "authorization",
+    "bearer"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hryhorii Furletov",
+      "email": "littlefuntik@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "yiisoft/yii2": ">=2.0.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "gbksoft\\tokens\\": ""
+    }
+  }
+}
