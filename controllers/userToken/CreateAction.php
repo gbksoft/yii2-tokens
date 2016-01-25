@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace api\versions\v1\controllers\userToken;
+namespace gbksoft\tokens\controllers\userToken;
 
 use Yii;
 use yii\web\ServerErrorHttpException;
-use common\models\UserToken;
+use gbksoft\tokens\models\UserToken;
 use yii\helpers\Url;
 
 /**

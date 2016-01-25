@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace api\versions\v1\controllers\userToken;
+namespace gbksoft\tokens\controllers\userToken;
 
 use Yii;
 use yii\helpers\Url;
