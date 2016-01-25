@@ -52,7 +52,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * Add default url rules of this module to custom urlManager
      * @param \yii\web\UrlManager $urlManager
      */
-    public function addUrlRules($urlManager)
+    public function addUrlRules(\yii\web\UrlManager $urlManager)
     {
         if ($app instanceof \yii\web\Application) {
             $urlManager->addRules([
