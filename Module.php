@@ -44,18 +44,18 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function bootstrap($app)
     {
         if (!$this->setUrlRules) {
-            $this->addUrlRules($app->getUrlManager());
+            $this->addUrlRules($app);
         }
     }
     
     /**
-     * Add default url rules of this module to custom urlManager
-     * @param \yii\web\UrlManager $urlManager
+     * Add default url rules of this module to custom urlManager of application
+     * @param \yii\base\Application $app
      */
-    public function addUrlRules(\yii\web\UrlManager $urlManager)
+    public function addUrlRules(\yii\base\Application $app)
     {
         if ($app instanceof \yii\web\Application) {
-            $urlManager->addRules([
+            $app->getUrlManager()->addRules([
                 'class' => $this->urlRuleClass,
                 'controller' => [
                     $this->id . '/user-token',
@@ -75,7 +75,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             /**
              * Next commented code used for example:
              */
-//            $urlManager->addRules([
+//            $app->getUrlManager()->addRules([
 //                $this->id => $this->id . '/default/index',
 //                $this->id . '/<id:\w+>' => $this->id . '/default/view',
 //                $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>' => $this->id . '/<controller>/<action>',
