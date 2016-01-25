@@ -24,7 +24,14 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * @inheritdoc
      */
     public $controllerNamespace = 'gbksoft\tokens\controllers';
-    
+    /**
+     * Add default url rules to urlManager for module controllers
+     * POST tokens/user-token         - create new userToken object for current identity
+     * POST tokens/user-token/current - userToken object for current identity
+     * POST tokens/user-token/extend  - add life to userToken for current identity
+     * GET tokens/user-token/{id}     - view userToken object by pk for current user (!)
+     */
+    public $setUrlRules = true;
     /**
      * Class used in rules for this module.
      * Default value is "yii\rest\UrlRule"
@@ -36,8 +43,19 @@ class Module extends \yii\base\Module implements BootstrapInterface
      */
     public function bootstrap($app)
     {
+        if (!$this->setUrlRules) {
+            $this->addUrlRules($app->getUrlManager());
+        }
+    }
+    
+    /**
+     * Add default url rules of this module to custom urlManager
+     * @param \yii\web\UrlManager $urlManager
+     */
+    public function addUrlRules($urlManager)
+    {
         if ($app instanceof \yii\web\Application) {
-            $app->getUrlManager()->addRules([
+            $urlManager->addRules([
                 'class' => $this->urlRuleClass,
                 'controller' => [
                     $this->id . '/user-token',
@@ -57,7 +75,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             /**
              * Next commented code used for example:
              */
-//            $app->getUrlManager()->addRules([
+//            $urlManager->addRules([
 //                $this->id => $this->id . '/default/index',
 //                $this->id . '/<id:\w+>' => $this->id . '/default/view',
 //                $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>' => $this->id . '/<controller>/<action>',
