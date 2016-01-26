@@ -37,6 +37,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * Default value is "yii\rest\UrlRule"
      */
     public $urlRuleClass = 'yii\rest\UrlRule';
+    /**
+     * Class extended yii\web\IdentityInterface interface
+     * Required option.
+     * @var string
+     */
+    public $userClass = 'yii\web\User';
     
     /**
      * @inheritdoc

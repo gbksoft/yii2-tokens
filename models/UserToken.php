@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user_token".
@@ -30,6 +31,20 @@ class UserToken extends ActiveRecord
      * Default life time for user token
      */
     const EXPIRE_DEFAULT_SECONDS = 604800; // One week
+    
+    /**
+     * User relation class name
+     * @var \yii\web\IdentityInterface
+     */
+    public $userClass;
+    
+    public function init()
+    {
+        if (!$this->userClass) {
+            $this->userClass = Yii::$app->controller->module->userClass;
+        }
+        return parent::init();
+    }
     
     /**
      * @inheritdoc
@@ -119,7 +134,7 @@ class UserToken extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne($this->userClass, ['id' => 'user_id']);
     }
     
     /**
@@ -143,7 +158,7 @@ class UserToken extends ActiveRecord
      * @param integer $expiredSeconds
      * @return boolean|common\models\UserToken
      */
-    public static function createForUser(User $user, $seconds = 0, $remember = false, $verifyIP = false)
+    public static function createForUser(IdentityInterface $user, $seconds = 0, $remember = false, $verifyIP = false)
     {
         $seconds = intval($seconds);
         if (!$seconds) {
