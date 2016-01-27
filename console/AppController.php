@@ -12,6 +12,8 @@ use yii\console\Controller as Controller;
 use gbksoft\tokens\models\UserToken;
 
 /**
+ * Tokens
+ * 
  * @author Hryhorii Furletov <littlefuntik@gmail.com>
  * @since 2.0
  */
@@ -20,7 +22,7 @@ class AppController extends Controller
     /**
      * Clear all expired data from current application
      */
-    public function actionClearExpiredTokens()
+    public function actionClearExpired()
     {
         // Die script every time
         // This condition for database connection
