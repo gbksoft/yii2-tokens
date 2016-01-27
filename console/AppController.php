@@ -20,6 +20,11 @@ use gbksoft\tokens\models\UserToken;
 class AppController extends Controller
 {
     /**
+     * @var \gbksoft\tokens\Module
+     */
+    public $module;
+    
+    /**
      * Clear all expired data from current application
      */
     public function actionClearExpired()
