@@ -49,7 +49,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        if (!$this->setUrlRules) {
+        if ($this->setUrlRules) {
             $this->addUrlRules($app);
         }
     }
