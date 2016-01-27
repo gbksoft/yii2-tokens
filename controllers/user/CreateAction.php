@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace gbksoft\tokens\controllers\userToken;
+namespace gbksoft\tokens\controllers\user;
 
 use Yii;
 use yii\web\ServerErrorHttpException;

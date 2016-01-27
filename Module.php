@@ -64,7 +64,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             $app->getUrlManager()->addRules([
                 'class' => $this->urlRuleClass,
                 'controller' => [
-                    $this->id . '/user-token',
+                    $this->id . '/user',
                 ],
                 'extraPatterns' => [
                     

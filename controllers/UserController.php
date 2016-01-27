@@ -10,7 +10,7 @@ use yii\rest\ActiveController;
  * 
  * @package gbksoft\tokens\controllers
  */
-class UserTokenController extends ActiveController
+class UserController extends ActiveController
 {
     public $modelClass = 'gbksoft\tokens\models\UserToken';
     
@@ -47,24 +47,24 @@ class UserTokenController extends ActiveController
             
             // Create new user token for current identity
             'create' => [
-                'class' => 'gbksoft\tokens\controllers\userToken\CreateAction',
+                'class' => 'gbksoft\tokens\controllers\user\CreateAction',
             ],
             
             // View by user token primaryKey
             'view' => [
-                'class' => 'gbksoft\tokens\controllers\userToken\ViewAction',
+                'class' => 'gbksoft\tokens\controllers\user\ViewAction',
             ],
                     
             // Get current user token
             'current' => [
-                'class' => 'gbksoft\tokens\controllers\userToken\CurrentAction',
+                'class' => 'gbksoft\tokens\controllers\user\CurrentAction',
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             
             // Extend user token expired time
             'extend' => [
-                'class' => 'gbksoft\tokens\controllers\userToken\ExtendAction',
+                'class' => 'gbksoft\tokens\controllers\user\ExtendAction',
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
