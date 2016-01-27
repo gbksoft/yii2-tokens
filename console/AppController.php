@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace gbksoft\tokens\commands;
+namespace gbksoft\tokens\console;
 
 use Yii;
 use yii\console\Controller as Controller;

@@ -88,7 +88,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
 //            ], false);
         } elseif ($app instanceof \yii\console\Application) {
             $app->controllerMap[$this->id] = [
-                'class' => 'gbksoft\tokens\commands\AppController',
+                'class' => 'gbksoft\tokens\console\AppController',
                 'module' => $this,
             ];
         }
