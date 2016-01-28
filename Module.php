@@ -38,6 +38,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
      * Default value is "yii\rest\UrlRule"
      */
     public $urlRuleClass = 'yii\rest\UrlRule';
+    public $urlRulePrefix = '';
     /**
      * Class extended yii\web\IdentityInterface interface
      * Required option.
@@ -64,6 +65,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
         if ($app instanceof \yii\web\Application) {
             $app->getUrlManager()->addRules([
                 [
+                    'prefix' => $this->urlRulePrefix,
                     'class' => $this->urlRuleClass,
                     'controller' => [
                         $this->id . '/user',
