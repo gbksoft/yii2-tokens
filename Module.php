@@ -20,6 +20,7 @@ use yii\web\ForbiddenHttpException;
  */
 class Module extends \yii\base\Module implements BootstrapInterface
 {
+    const MODULE_ID = 'tokens';
     /**
      * @inheritdoc
      */

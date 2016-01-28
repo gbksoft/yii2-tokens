@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use gbksoft\tokens\Module;
 
 /**
  * This is the model class for table "user_token".
@@ -41,7 +42,7 @@ class UserToken extends ActiveRecord
     public function init()
     {
         if (!$this->userClass) {
-            $this->userClass = Yii::$app->controller->module->userClass;
+            $this->userClass = Yii::$app->controller->modules[Module::MODULE_ID]->userClass;
         }
         return parent::init();
     }
