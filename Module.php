@@ -62,20 +62,22 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         if ($app instanceof \yii\web\Application) {
             $app->getUrlManager()->addRules([
-                'class' => $this->urlRuleClass,
-                'controller' => [
-                    $this->id . '/user',
-                ],
-                'extraPatterns' => [
-                    
-                    // Get info of the current user token
-                    'POST current' => 'current',
-                    
-                    // Extend user token expired time
-                    'POST extend' => 'extend',
-                    
-                ],
-                'pluralize' => false,
+                [
+                    'class' => $this->urlRuleClass,
+                    'controller' => [
+                        $this->id . '/user',
+                    ],
+                    'extraPatterns' => [
+
+                        // Get info of the current user token
+                        'POST current' => 'current',
+
+                        // Extend user token expired time
+                        'POST extend' => 'extend',
+
+                    ],
+                    'pluralize' => false,
+                ]
             ]);
             
             /**
