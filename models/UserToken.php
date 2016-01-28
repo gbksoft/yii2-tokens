@@ -42,7 +42,7 @@ class UserToken extends ActiveRecord
     public function init()
     {
         if (!$this->userClass) {
-            $this->userClass = Yii::$app->controller->modules[Module::MODULE_ID]->userClass;
+            $this->userClass = Yii::$app->modules[Module::MODULE_ID]->userClass;
         }
         return parent::init();
     }
