@@ -1,5 +1,5 @@
 <?php
-namespace gbksoft\tokens\controllers;
+namespace gbksoft\modules\tokens\controllers;
 
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
@@ -8,11 +8,11 @@ use yii\rest\ActiveController;
 /**
  * Class UserTokenController
  * 
- * @package gbksoft\tokens\controllers
+ * @package gbksoft\modules\tokens\controllers
  */
 class UserController extends ActiveController
 {
-    public $modelClass = 'gbksoft\tokens\models\UserToken';
+    public $modelClass = 'gbksoft\modules\tokens\models\UserToken';
     
     /**
      * @inheritdoc
@@ -47,24 +47,24 @@ class UserController extends ActiveController
             
             // Create new user token for current identity
             'create' => [
-                'class' => 'gbksoft\tokens\controllers\user\CreateAction',
+                'class' => 'gbksoft\modules\tokens\controllers\user\CreateAction',
             ],
             
             // View by user token primaryKey
             'view' => [
-                'class' => 'gbksoft\tokens\controllers\user\ViewAction',
+                'class' => 'gbksoft\modules\tokens\controllers\user\ViewAction',
             ],
                     
             // Get current user token
             'current' => [
-                'class' => 'gbksoft\tokens\controllers\user\CurrentAction',
+                'class' => 'gbksoft\modules\tokens\controllers\user\CurrentAction',
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],
             
             // Extend user token expired time
             'extend' => [
-                'class' => 'gbksoft\tokens\controllers\user\ExtendAction',
+                'class' => 'gbksoft\modules\tokens\controllers\user\ExtendAction',
                 'modelClass' => $this->modelClass,
                 'checkAccess' => [$this, 'checkAccess'],
             ],

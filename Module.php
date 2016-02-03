@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace gbksoft\tokens;
+namespace gbksoft\modules\tokens;
 
 use Yii;
 use yii\base\BootstrapInterface;
@@ -24,7 +24,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'gbksoft\tokens\controllers';
+    public $controllerNamespace = 'gbksoft\modules\tokens\controllers';
     /**
      * Add default url rules to urlManager for module controllers
      * POST tokens/user-token         - create new userToken object for current identity
@@ -82,18 +82,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
                     'pluralize' => false,
                 ]
             ]);
-            
-            /**
-             * Next commented code used for example:
-             */
-//            $app->getUrlManager()->addRules([
-//                $this->id => $this->id . '/default/index',
-//                $this->id . '/<id:\w+>' => $this->id . '/default/view',
-//                $this->id . '/<controller:[\w\-]+>/<action:[\w\-]+>' => $this->id . '/<controller>/<action>',
-//            ], false);
         } elseif ($app instanceof \yii\console\Application) {
             $app->controllerMap[$this->id] = [
-                'class' => 'gbksoft\tokens\console\AppController',
+                'class' => 'gbksoft\modules\tokens\console\AppController',
                 'module' => $this,
             ];
         }

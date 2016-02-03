@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace gbksoft\tokens\controllers\user;
+namespace gbksoft\modules\tokens\controllers\user;
 
 use Yii;
 use yii\helpers\Url;

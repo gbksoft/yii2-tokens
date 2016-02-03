@@ -5,11 +5,11 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace gbksoft\tokens\console;
+namespace gbksoft\modules\tokens\console;
 
 use Yii;
 use yii\console\Controller as Controller;
-use gbksoft\tokens\models\UserToken;
+use gbksoft\modules\tokens\models\UserToken;
 
 /**
  * Tokens
@@ -20,7 +20,7 @@ use gbksoft\tokens\models\UserToken;
 class AppController extends Controller
 {
     /**
-     * @var \gbksoft\tokens\Module
+     * @var \gbksoft\modules\tokens\Module
      */
     public $module;
     

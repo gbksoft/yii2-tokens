@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "gbksoft\\tokens\\": ""
+      "gbksoft\\modules\\tokens\\": ""
     }
   }
 }

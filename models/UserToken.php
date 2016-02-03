@@ -1,13 +1,13 @@
 <?php
 
-namespace gbksoft\tokens\models;
+namespace gbksoft\modules\tokens\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use gbksoft\tokens\Module;
+use gbksoft\modules\tokens\Module;
 
 /**
  * This is the model class for table "user_token".
