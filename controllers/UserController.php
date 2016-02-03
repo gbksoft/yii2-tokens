@@ -12,6 +12,8 @@ use yii\rest\ActiveController;
  */
 class UserController extends ActiveController
 {
+    const EVENT_BEFORE_BEHAVIOR = 'beforeControllerBehavior';
+    
     public $modelClass = 'gbksoft\modules\tokens\models\UserToken';
     
     /**
@@ -19,10 +21,11 @@ class UserController extends ActiveController
      */
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(), [
-            'authenticator' => [
-                'except' => ['options'], // pass authorization
-            ],
+        $event = new \yii\base\Event();
+        $event->data = [];
+        $this->module->trigger(self::EVENT_BEFORE_BEHAVIOR, $event);
+        
+        return ArrayHelper::merge(parent::behaviors(), $event->data, [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -33,7 +36,7 @@ class UserController extends ActiveController
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'view', 'options', 'current', 'extend'],
+                        'actions' => ['create', 'view', 'current', 'extend'],
                         'roles' => ['@'],
                     ],
                 ],
