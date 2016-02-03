@@ -205,3 +205,9 @@ class LoginAction extends \yii\rest\CreateAction {
     }
 }
 ```
+
+Console command for clear expired tokens
+
+```bash
+./yii tokens/tokens/clear-expired
+```
