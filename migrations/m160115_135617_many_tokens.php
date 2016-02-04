@@ -8,9 +8,14 @@
  */
 
 use yii\db\Migration;
+use yii\base\Event;
 
 class m160115_135617_many_tokens extends Migration
 {
+    const EVENT_BEFORE_MIGRATE_UP = 'beforeUserTokenMigrateUp';
+    
+    public $usersTableName = '{{%user}}';
+    
     public function up()
     {
         $tableOptions = null;
@@ -18,6 +23,11 @@ class m160115_135617_many_tokens extends Migration
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
+        
+        // Trigger events
+        Yii::$app->trigger(self::EVENT_BEFORE_MIGRATE_UP, new Event([
+            'sender' => $this,
+        ]));
         
         $this->createTable('{{%user_token}}', [
             'id' => $this->primaryKey(),
@@ -37,7 +47,7 @@ class m160115_135617_many_tokens extends Migration
             'expired_at'  => $this->dateTime(),
         ], $tableOptions);
         
-        $this->addForeignKey('fk_token_user', '{{%user_token}}', 'user_id', '{{%user}}', 'id', 'CASCADE');
+        $this->addForeignKey('fk_token_user', '{{%user_token}}', 'user_id', $this->usersTableName, 'id', 'CASCADE');
         $this->createIndex('i_user_token', '{{%user_token}}', 'token');
         $this->createIndex('i_user_token_expired', '{{%user_token}}', ['token', 'expired_at']);
     }

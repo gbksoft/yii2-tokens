@@ -41,6 +41,31 @@ Module configurations:
 ...
 ```
 
+Change table name for relations to users table.
+Console application event for change `{{%user}}` table name in module migrations example:
+
+```
+    'on beforeUserTokenMigrateUp' => function($event) {
+        // $event->sender is Migration class
+        // $event->sender->usersTableName default value is "{{%user}}"
+        $event->sender->usersTableName = '{{%users}}';
+    }
+```
+
+Use controllerMap in console config:
+
+```
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'console\controllers\MigrateController',
+            'migrationLookup' => [
+                '@console/migrations',
+                '@vendor/gbksoft/yii2-tokens/migrations',
+            ]
+        ]
+    ],
+```
+
 In IdentityInterface (User model)
 
 ```php
