@@ -88,14 +88,18 @@ class User extends ActiveRecord implements IdentityInterface
         /** @var $userToken \common\models\UserToken */
         $userToken = UserToken::find()
             ->andWhere(['=', 'token', $token])
-            // Additional conditions..
-            // ->joinWith(['user' => function($query) {
-            //     $query->onCondition(['=', 'user.status', self::STATUS_ACTIVE]);
-            // }])
             ->one();
         
         if (!$userToken) {
-            return $userToken;
+            throw new UnauthorizedHttpException('Bad token');
+        }
+        
+        if (!$userToken->user) {
+            throw new UnauthorizedHttpException('User not found');
+        }
+        
+        if ($userToken->user->status == self::STATUS_DELETED) {
+            throw new UnauthorizedHttpException('This user has deleted');
         }
         
         if (!$userToken->matchIp(Yii::$app->getRequest()->userIP)) {
@@ -106,12 +110,8 @@ class User extends ActiveRecord implements IdentityInterface
             throw new UnauthorizedHttpException('User token is expired');
         }
         
-        if ($userToken) {
-            $user = $userToken->user;
-            $user->userToken = $userToken;
-        } else {
-            $user = $userToken; // null default
-        }
+        $user = $userToken->getUser()->one();
+        $user->userToken = $userToken;
         
         return $user;
     }
