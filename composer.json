@@ -2,7 +2,7 @@
   "name": "gbksoft/yii2-tokens",
   "description": "Yii 2 custom tokens architecture for authorization",
   "type": "yii2-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "yii2",
     "extension",
