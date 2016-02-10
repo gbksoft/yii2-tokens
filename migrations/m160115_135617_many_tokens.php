@@ -15,6 +15,7 @@ class m160115_135617_many_tokens extends Migration
     const EVENT_BEFORE_MIGRATE_UP = 'beforeUserTokenMigrateUp';
     
     public $usersTableName = '{{%user}}';
+    public $userIdField = null;
     
     public function up()
     {
@@ -31,7 +32,7 @@ class m160115_135617_many_tokens extends Migration
         
         $this->createTable('{{%user_token}}', [
             'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
+            'user_id' => $this->userIdField ? $this->userIdField : $this->integer(),
             'token' => $this->string(128)->notNull(),
             'verify_ip' => $this->boolean()->defaultValue(false),
             
